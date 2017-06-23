@@ -330,5 +330,3 @@ export default class Smooth {
         this.removeEvents()
     }
 }
-
-window.Smooth = Smooth

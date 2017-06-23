@@ -418,9 +418,6 @@ var Smooth = function () {
 
 exports.default = Smooth;
 
-
-window.Smooth = Smooth;
-
 },{"dom-classes":3,"dom-create-element":4,"dom-events":5,"prefix":9,"virtual-scroll":15}],2:[function(require,module,exports){
 'use strict';
 

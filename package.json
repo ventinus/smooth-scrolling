@@ -1,6 +1,6 @@
 {
   "name": "smooth-scrolling",
-  "version": "2.3.8.1",
+  "version": "2.3.81",
   "description": "Smooth is a small JavaScript module based on VirtualScroll to create smooth scrolling and parallax effects on scroll.",
   "main": "smooth-scrolling.js",
   "jsnext:main": "index",
