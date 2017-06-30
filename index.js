@@ -132,10 +132,8 @@ export default class Smooth {
 
     run() {
 
-        if (!window.preventBodyScroll) {
-            this.vars.current += (this.vars.target - this.vars.current) * this.vars.ease
-            this.vars.current < .1 && (this.vars.current = 0)
-        }
+        this.vars.current += (this.vars.target - this.vars.current) * this.vars.ease
+        this.vars.current < .1 && (this.vars.current = 0)
 
         this.rAF = requestAnimationFrame(this.run)
 
