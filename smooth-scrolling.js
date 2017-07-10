@@ -62,6 +62,8 @@ var Smooth = function () {
             ticking: false
         };
 
+        this.isEnabled = false;
+
         this.vs = this.vars.native ? null : new _virtualScroll2.default({
             limitInertia: this.options.vs && this.options.vs.limitInertia || false,
             mouseMultiplier: this.options.vs && this.options.vs.mouseMultiplier || 1,
@@ -108,6 +110,7 @@ var Smooth = function () {
 
             this.addEvents();
             this.resize();
+            this.isEnabled = true;
         }
     }, {
         key: 'addClasses',
@@ -209,6 +212,7 @@ var Smooth = function () {
             this.vars.native ? _domEvents2.default.on(node, 'scroll', this.debounce) : this.vs && this.vs.on(this.calc);
 
             requestAnimationFrame && this.requestAnimationFrame();
+            this.isEnabled = true;
         }
     }, {
         key: 'off',
@@ -221,6 +225,7 @@ var Smooth = function () {
             this.vars.native ? _domEvents2.default.off(node, 'scroll', this.debounce) : this.vs && this.vs.off(this.calc);
 
             cancelAnimationFrame && this.cancelAnimationFrame();
+            this.isEnabled = false;
         }
     }, {
         key: 'requestAnimationFrame',
@@ -410,6 +415,8 @@ var Smooth = function () {
             this.vs && (this.vs.destroy(), this.vs = null);
 
             this.removeEvents();
+
+            this.isEnabled = false;
         }
     }]);
 

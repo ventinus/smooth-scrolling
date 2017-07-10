@@ -33,6 +33,8 @@ export default class Smooth {
             ticking: false
         }
 
+        this.isEnabled = false
+
         this.vs = this.vars.native ? null : new vs({
             limitInertia: this.options.vs && this.options.vs.limitInertia || false,
             mouseMultiplier: this.options.vs && this.options.vs.mouseMultiplier || 1,
@@ -74,6 +76,7 @@ export default class Smooth {
 
         this.addEvents()
         this.resize()
+        this.isEnabled = true
     }
 
     addClasses() {
@@ -164,6 +167,7 @@ export default class Smooth {
         this.vars.native ? event.on(node, 'scroll', this.debounce) : (this.vs && this.vs.on(this.calc))
 
         requestAnimationFrame && this.requestAnimationFrame()
+        this.isEnabled = true
     }
 
     off(cancelAnimationFrame = true) {
@@ -173,6 +177,7 @@ export default class Smooth {
         this.vars.native ? event.off(node, 'scroll', this.debounce) : (this.vs && this.vs.off(this.calc))
 
         cancelAnimationFrame && this.cancelAnimationFrame()
+        this.isEnabled = false
     }
 
     requestAnimationFrame() {
@@ -328,6 +333,8 @@ export default class Smooth {
         this.vs && (this.vs.destroy(), this.vs = null)
 
         this.removeEvents()
+
+        this.isEnabled = false
     }
 }
 
